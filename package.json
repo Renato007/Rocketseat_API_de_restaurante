@@ -1,0 +1,9 @@
+{
+  "name": "rocketseat_api_de_restaurante",
+  "version": "1.0.0",
+  "description": "API para gerenciar pedidos das mesas de um restaurante.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Renato Soares",
+  "license": "ISC"
+}
