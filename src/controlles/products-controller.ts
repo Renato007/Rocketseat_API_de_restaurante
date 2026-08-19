@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import {knex} from "@/database/knex"
 import { z } from "zod";
 
 class ProductController {
@@ -21,7 +22,10 @@ class ProductController {
       });
       // ler e passa para o zod para validação, caso não seja validado, o zod lança um erro que é capturado pelo catch e passado para o next(error)
       const { name, price } = bodySchema.parse(request.body);
-      return response.status(201).json({ name, price });
+
+      await knex<ProductRepository>("products").insert({name, price})
+
+      return response.status(201).json();
     } catch (error) {
       next(error);
     }
