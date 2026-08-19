@@ -13,9 +13,10 @@ export function errorHandling(
   }
 
   if (error instanceof ZodError) {
+    // verificar se o servidor entendeu o pedido
     return response
       .status(400)
-      .json({ message: "validadtion error", issues: error.format() });
+      .json({ message: "validation error", issues: error.format() });
   }
 
   return response.status(500).json({ message: error.message });
