@@ -4,6 +4,7 @@ import { TablesSessionsController } from "@/controlles/tables-sessions-controlle
 const tableSessionsRoutes = Router();
 const tablesSessionsController = new TablesSessionsController();
 
+tableSessionsRoutes.get("/", tablesSessionsController.index);
 tableSessionsRoutes.post("/", tablesSessionsController.create);
 
 export {tableSessionsRoutes}

@@ -3,6 +3,7 @@ import z from "zod";
 import { knex } from "../database/knex";
 import { AppError } from "@/utils/AppErros";
 
+
 class TablesSessionsController {
   async create(request: Request, response: Response, next: NextFunction) {
     try {
@@ -27,6 +28,16 @@ class TablesSessionsController {
       });
 
       return response.status(201).json();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async index(request: Request, response: Response, next: NextFunction) {
+    try {
+      const sessions = await knex<TableSessionsRepository>("tables_sessions").orderBy("closed_at")
+
+      return response.json(sessions);
     } catch (error) {
       next(error);
     }
