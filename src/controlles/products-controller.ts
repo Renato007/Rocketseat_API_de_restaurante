@@ -85,7 +85,6 @@ class ProductController {
         .where({ id })
         .first();
       if (!product) {
-        console.log(Error);
 
         throw new AppError("Product not found");
       }
