@@ -3,7 +3,6 @@ import z from "zod";
 import { knex } from "../database/knex";
 import { AppError } from "@/utils/AppErros";
 
-
 class TablesSessionsController {
   async create(request: Request, response: Response, next: NextFunction) {
     try {
@@ -35,9 +34,26 @@ class TablesSessionsController {
 
   async index(request: Request, response: Response, next: NextFunction) {
     try {
-      const sessions = await knex<TableSessionsRepository>("tables_sessions").orderBy("closed_at")
+      const sessions =
+        await knex<TableSessionsRepository>("tables_sessions").orderBy(
+          "closed_at",
+        );
 
       return response.json(sessions);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async update(request: Request, response: Response, next: NextFunction) {
+    try {
+      const id = z
+        .string()
+        .transform((value) => Number(value))
+        .refine((value) => !isNaN(value), "id must be a number")
+        .parse(request.params.id)
+
+      return response.json();
     } catch (error) {
       next(error);
     }
