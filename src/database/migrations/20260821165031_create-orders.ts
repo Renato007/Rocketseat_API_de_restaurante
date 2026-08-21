@@ -9,7 +9,7 @@ export async function up(knex: Knex): Promise<void> {
       .references("id")
       .inTable("tables_sessions")),
     table
-      .integer("produto_id")
+      .integer("product_id")
       .notNullable()
       .references("id")
       .inTable("products")),
