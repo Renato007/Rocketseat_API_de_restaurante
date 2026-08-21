@@ -34,7 +34,7 @@ Sistema para administrar os pedidos que são feitos por cada mesa do restaurante
 - [Visite o projeto online]( https://renato007.github.io/Rocketseat_API_de_restaurante)
 
 ## 💻 Pontos de aprendizagem
-* - [aula](##)
+* - [Mudar o preço atual sem perder o histórico.](##)
 * - [aula](##)
 
 ## :memo: Licença
